@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<!--
+  ENTWURF. Vor der Veröffentlichung juristisch prüfen lassen.
+  Alle Stellen in [ECKIGEN KLAMMERN] sind Platzhalter.
+  Diese Erklärung beschreibt den IST-Zustand der Seite: Hosting über GitHub Pages,
+  Kontakt per E-Mail, sonst nichts. Keine Cookies, kein Tracking, kein Analytics,
+  keine Schriften von fremden Servern.
+  WICHTIG: Sobald irgendetwas davon dazukommt (Analytics, Kontaktformular,
+  eingebettete Videos von YouTube oder Vimeo, Pixel), muss dieser Text erweitert
+  werden, und dann braucht die Seite in der Regel auch einen Cookie-Hinweis.
+-->
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Datenschutz · Nitor Studios</title>
+<meta name="description" content="Datenschutzerklärung nach DSGVO. Nitor Studios, Wien. Keine Cookies, kein Tracking.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#F2EFE9">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='6' fill='%231A1815'/%3E%3Cline x1='46' y1='-4' x2='20' y2='70' stroke='%238A7350' stroke-width='5'/%3E%3Ctext x='32' y='45' font-family='Georgia,serif' font-size='38' fill='%23F2EFE9' text-anchor='middle'%3EN%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --canvas:#F2EFE9;--panel:#ECE7DE;--dark:#1A1815;--accent:#8A7350;--accent-hover:#75613F;
+  --accent-muted:rgba(138,115,80,.28);--text-primary:#1A1815;--text-secondary:#6B6660;--line:#DDD8D0;
+  --serif:'Instrument Serif',Georgia,serif;--sans:'Inter',Helvetica,Arial,sans-serif;
+  --ease:cubic-bezier(.22,.61,.36,1);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{overflow-x:hidden;overflow-x:clip}
+body{font-family:var(--sans);font-weight:400;font-size:16px;line-height:1.65;color:var(--text-primary);background:var(--canvas)}
+.skip{position:absolute;left:-9999px;top:0;z-index:100;background:var(--dark);color:var(--canvas);padding:.6rem 1rem;font-size:.85rem}
+.skip:focus{left:1rem;top:1rem}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+nav{position:sticky;top:0;z-index:50;display:flex;align-items:baseline;justify-content:space-between;
+  padding:1.1rem clamp(1.2rem,4vw,3rem);background:rgba(242,239,233,.92);border-bottom:1px solid var(--line);backdrop-filter:blur(8px)}
+.wordmark{font-family:var(--serif);font-size:1.25rem;letter-spacing:.14em;color:var(--text-primary);text-decoration:none}
+.wordmark small{font-family:var(--sans);font-weight:400;font-size:.55rem;letter-spacing:.5em;color:var(--text-secondary);margin-left:.6em;vertical-align:.12em}
+nav .back{font-size:.72rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--text-secondary);text-decoration:none;transition:color .3s var(--ease)}
+nav .back:hover{color:var(--accent)}
+main{max-width:52rem;margin:0 auto;padding:clamp(3rem,8vw,6rem) clamp(1.2rem,4vw,3rem) clamp(4rem,8vw,7rem)}
+.kicker{font-size:.72rem;font-weight:500;letter-spacing:.32em;text-transform:uppercase;color:var(--accent-hover);margin-bottom:1rem}
+h1{font-family:var(--serif);font-weight:400;font-size:clamp(2.2rem,5vw,3.2rem);line-height:1.12;margin-bottom:.8rem}
+.lead{font-weight:300;font-size:1.05rem;color:var(--text-secondary);max-width:54ch;margin-bottom:clamp(2.5rem,5vw,3.5rem)}
+h2{font-family:var(--serif);font-weight:400;font-size:1.5rem;line-height:1.25;margin:clamp(2.2rem,4vw,3rem) 0 .9rem;padding-top:1.4rem;border-top:1px solid var(--line)}
+h2:first-of-type{border-top:0;padding-top:0;margin-top:0}
+h3{font-family:var(--sans);font-weight:500;font-size:.95rem;margin:1.5rem 0 .5rem}
+p{margin-bottom:1rem;max-width:64ch}
+p.small{font-size:.9rem;font-weight:300;color:var(--text-secondary)}
+ul{margin:0 0 1.2rem 1.1rem;max-width:64ch}
+li{margin-bottom:.5rem;padding-left:.3rem}
+li::marker{color:var(--accent)}
+a{color:var(--accent-hover);text-decoration:none;border-bottom:1px solid var(--accent-muted);transition:border-color .3s var(--ease)}
+a:hover{border-color:var(--accent)}
+dl{margin-bottom:1.2rem}
+dt{font-size:.7rem;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--text-secondary);margin-top:1.1rem}
+dd{margin-top:.2rem;max-width:62ch}
+.ph{background:rgba(138,115,80,.12);border-bottom:1px dashed var(--accent);padding:.05em .35em;font-weight:500;color:var(--accent-hover)}
+.hinweis{margin-bottom:clamp(2.5rem,5vw,3.5rem);padding:1.2rem 1.3rem;border-left:2px solid var(--accent);background:var(--panel)}
+.hinweis p{margin-bottom:0;font-size:.94rem;font-weight:300;line-height:1.7}
+footer{border-top:1px solid var(--line);padding:3rem clamp(1.2rem,4vw,3rem);text-align:center}
+footer .fm{font-family:var(--serif);font-size:1.4rem;letter-spacing:.14em}
+footer .fm small{display:block;font-family:var(--sans);font-weight:400;font-size:.55rem;letter-spacing:.5em;color:var(--text-secondary);margin-top:.4rem}
+footer .fline{margin-top:1.4rem;font-size:.8rem;font-weight:300;color:var(--text-secondary);line-height:1.9}
+footer .flinks{margin-top:1.1rem;display:flex;gap:.8rem;justify-content:center;align-items:baseline;
+  font-size:.75rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--line)}
+footer .flinks a{color:var(--text-secondary);border-bottom:0}
+footer .flinks a:hover{color:var(--accent)}
+@media (pointer:coarse){footer .flinks a{min-height:44px;display:inline-flex;align-items:center}}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Zum Inhalt springen</a>
+
+<nav aria-label="Hauptnavigation">
+  <a class="wordmark" href="index.html">NITOR<small>STUDIOS</small></a>
+  <a class="back" href="index.html">Zurück zur Startseite</a>
+</nav>
+
+<main id="main" tabindex="-1">
+  <p class="kicker">Rechtliches</p>
+  <h1>Datenschutzerklärung</h1>
+  <p class="lead">Diese Website setzt keine Cookies, misst nichts und bindet keine Werbenetzwerke ein. Was trotzdem an Daten anfällt, steht hier.</p>
+
+  <div class="hinweis">
+    <p><strong>Entwurf.</strong> Alle farbig markierten Stellen sind Platzhalter. Die Erklärung beschreibt den heutigen Stand der Seite. Sobald ein Kontaktformular, eingebettete Videos von fremden Plattformen oder eine Statistik dazukommen, muss sie erweitert werden.</p>
+  </div>
+
+  <h2>Verantwortlicher</h2>
+  <p>Verantwortlich im Sinne der Datenschutz-Grundverordnung ist:</p>
+  <dl>
+    <dt>Name</dt>
+    <dd><span class="ph">[Vor- und Nachname]</span></dd>
+    <dt>Anschrift</dt>
+    <dd><span class="ph">[Straße und Hausnummer]</span>, <span class="ph">[PLZ]</span> Wien, Österreich</dd>
+    <dt>E-Mail</dt>
+    <dd><a href="mailto:marc.nitorstudios@gmail.com">marc.nitorstudios@gmail.com</a></dd>
+  </dl>
+  <p class="small">Ein Datenschutzbeauftragter ist nicht bestellt, weil die Voraussetzungen nach Art. 37 DSGVO nicht vorliegen.</p>
+
+  <h2>Hosting über GitHub Pages</h2>
+  <p>Diese Website wird von GitHub Inc., 88 Colin P Kelly Jr Street, San Francisco, CA 94107, USA gehostet. Beim Aufruf der Seite werden Daten an Server von GitHub übertragen und dort in Server-Logfiles gespeichert. Erfasst werden dabei üblicherweise:</p>
+  <ul>
+    <li>die IP-Adresse des zugreifenden Geräts</li>
+    <li>Datum und Uhrzeit des Zugriffs</li>
+    <li>die aufgerufene Seite oder Datei</li>
+    <li>die zuvor besuchte Seite, sofern der Browser sie übermittelt</li>
+    <li>Browsertyp, Browserversion und Betriebssystem</li>
+  </ul>
+  <p>Diese Verarbeitung ist technisch notwendig, damit die Seite überhaupt ausgeliefert werden kann. Rechtsgrundlage ist das berechtigte Interesse an einem sicheren und störungsfreien Betrieb nach Art. 6 Abs. 1 lit. f DSGVO.</p>
+  <p>GitHub verarbeitet Daten auch in den Vereinigten Staaten. Die Übermittlung stützt sich auf die Standardvertragsklauseln der Europäischen Kommission sowie auf das EU-US Data Privacy Framework, an dem GitHub teilnimmt. Näheres in der Datenschutzerklärung von GitHub: <a href="https://docs.github.com/site-policy/privacy-policies/github-general-privacy-statement" rel="noopener">GitHub Privacy Statement</a></p>
+  <p class="small">Auf die Speicherdauer dieser Logfiles besteht kein Einfluss, sie liegt bei GitHub. <span class="ph">[Falls die Seite später auf ein eigenes Hosting umzieht, muss dieser Abschnitt komplett ersetzt werden.]</span></p>
+
+  <h2>Schriften von Google Fonts</h2>
+  <p>Diese Seite lädt die Schriften Instrument Serif und Inter von Servern von Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Irland. Dabei wird die IP-Adresse des Geräts an Google übertragen. Rechtsgrundlage ist das berechtigte Interesse an einer einheitlichen Darstellung nach Art. 6 Abs. 1 lit. f DSGVO.</p>
+  <p class="small">Wer diese Übertragung vermeiden will, lädt die Schriftdateien herunter und liefert sie von der eigenen Seite aus. Dann entfällt dieser Abschnitt. Das ist die datenschutzfreundlichere Variante und mit wenig Aufwand umsetzbar.</p>
+
+  <h2>Kontaktaufnahme per E-Mail</h2>
+  <p>Wer eine E-Mail schreibt, übermittelt damit seine Adresse und die Angaben, die er selbst in die Nachricht schreibt. Diese Daten werden ausschließlich zur Bearbeitung der Anfrage verwendet und nicht ohne Zustimmung weitergegeben.</p>
+  <p>Rechtsgrundlage ist Art. 6 Abs. 1 lit. b DSGVO, soweit die Anfrage der Anbahnung oder Erfüllung eines Vertrags dient, sonst das berechtigte Interesse an der Beantwortung nach Art. 6 Abs. 1 lit. f DSGVO.</p>
+  <p>Der E-Mail-Verkehr läuft über <span class="ph">[Google Mail, Google Ireland Limited]</span>. Auch dieser Anbieter verarbeitet dabei Daten.</p>
+  <p class="small">Für geschäftliche Korrespondenz gelten die steuerrechtlichen Aufbewahrungsfristen. Nach § 132 Bundesabgabenordnung sind das in der Regel sieben Jahre. Anfragen, aus denen kein Auftrag wird, werden nach <span class="ph">[Zeitraum, etwa sechs Monate]</span> gelöscht.</p>
+
+  <h2>Keine Cookies, keine Statistik, keine Werbenetzwerke</h2>
+  <p>Diese Seite setzt keine Cookies und verwendet keine Analyseprogramme, keine Zählpixel und keine Werbenetzwerke. Die Videos liegen auf demselben Server wie die Seite und werden nicht von YouTube, Vimeo oder einer anderen Plattform eingebunden. Es entsteht also kein Profil des Besuchsverhaltens.</p>
+  <p>Ein Teil der Bedienung merkt sich Zustände nur im Browser des Besuchers selbst. Diese Angaben verlassen das Gerät nicht und sind für den Betreiber der Seite nicht einsehbar.</p>
+
+  <h2>Empfänger der Daten</h2>
+  <p>Über die genannten Dienstleister hinaus werden keine Daten an Dritte weitergegeben. Eine Weitergabe erfolgt nur, wenn eine gesetzliche Verpflichtung besteht.</p>
+
+  <h2>Deine Rechte</h2>
+  <p>Nach der Datenschutz-Grundverordnung stehen dir jederzeit folgende Rechte zu:</p>
+  <ul>
+    <li>Auskunft über die zu deiner Person gespeicherten Daten, Art. 15 DSGVO</li>
+    <li>Berichtigung unrichtiger Daten, Art. 16 DSGVO</li>
+    <li>Löschung, Art. 17 DSGVO</li>
+    <li>Einschränkung der Verarbeitung, Art. 18 DSGVO</li>
+    <li>Datenübertragbarkeit, Art. 20 DSGVO</li>
+    <li>Widerspruch gegen eine Verarbeitung, die auf berechtigtem Interesse beruht, Art. 21 DSGVO</li>
+  </ul>
+  <p>Für alle diese Anliegen genügt eine E-Mail an <a href="mailto:marc.nitorstudios@gmail.com">marc.nitorstudios@gmail.com</a>.</p>
+
+  <h2>Beschwerderecht</h2>
+  <p>Wer der Ansicht ist, dass die Verarbeitung seiner Daten gegen das Datenschutzrecht verstößt, kann sich bei der Aufsichtsbehörde beschweren. In Österreich ist das die Österreichische Datenschutzbehörde, Barichgasse 40 bis 42, 1030 Wien, <a href="https://www.dsb.gv.at" rel="noopener">dsb.gv.at</a>.</p>
+
+  <h2>Stand</h2>
+  <p><span class="ph">[Datum der letzten Änderung eintragen]</span>. Diese Erklärung wird angepasst, sobald sich die Technik der Seite oder die Rechtslage ändert.</p>
+</main>
+
+<footer>
+  <p class="fm">NITOR<small>STUDIOS</small></p>
+  <p class="fline">
+    Marc Stelzer · Wien<br>
+    © 2026 Nitor Studios
+  </p>
+  <p class="flinks">
+    <a href="index.html">Startseite</a>
+    <span aria-hidden="true">·</span>
+    <a href="impressum.html">Impressum</a>
+  </p>
+</footer>
+</body>
+</html>
