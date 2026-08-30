@@ -1,0 +1,24 @@
+Schriften auf dieser Website
+============================
+
+Instrument Serif
+  Gestaltung: Rodrigo Fuenzalida, Jordan Egstad
+  Lizenz: SIL Open Font License 1.1
+  https://openfontlicense.org
+
+Inter
+  Gestaltung: Rasmus Andersson
+  Lizenz: SIL Open Font License 1.1
+  https://openfontlicense.org
+
+Beide Schriften stehen unter der SIL Open Font License 1.1 und dürfen frei
+verwendet, eingebettet und auf eigenen Servern ausgeliefert werden, auch
+kommerziell. Die Dateien liegen hier als WOFF2 in den Teilmengen latin und
+latin-ext.
+
+Die Dateien werden von dieser Website selbst ausgeliefert und nicht von
+Google-Servern geladen. Dadurch wird beim Aufruf der Seite keine IP-Adresse an
+Google übertragen.
+
+Inter ist eine Variable Font: eine einzige Datei deckt alle Strichstärken von
+100 bis 900 ab. Deshalb liegen für Inter nur zwei Dateien hier, nicht sechs.
