@@ -43,8 +43,19 @@ body{font-family:var(--sans);font-weight:400;font-size:16px;line-height:1.65;col
 .skip{position:absolute;left:-9999px;top:0;z-index:100;background:var(--dark);color:var(--canvas);padding:.6rem 1rem;font-size:.85rem}
 .skip:focus{left:1rem;top:1rem}
 :focus-visible{outline:2px solid var(--accent);outline-offset:3px}
-nav{position:sticky;top:0;z-index:50;display:flex;align-items:baseline;justify-content:space-between;
+nav{position:sticky;top:0;z-index:50;display:grid;grid-template-columns:1fr auto 1fr;align-items:baseline;
   padding:1.1rem clamp(1.2rem,4vw,3rem);background:rgba(242,239,233,.92);border-bottom:1px solid var(--line);backdrop-filter:blur(8px)}
+nav .wordmark{grid-column:2}
+nav .back{grid-column:3;justify-self:end}
+@media (max-width:620px){
+  nav{grid-template-columns:1fr;justify-items:center;gap:.5rem}
+  nav .wordmark,nav .back{grid-column:1;justify-self:center}
+}
+/* Kopf und Anschrift stehen mittig, der Fliesstext bleibt linksbuendig lesbar */
+main>.kicker,main>h1,main>.lead{text-align:center}
+main>.lead{margin-left:auto;margin-right:auto}
+.ident{text-align:center}
+.ident p,.ident dd{margin-left:auto;margin-right:auto}
 .wordmark{font-family:var(--serif);font-size:1.25rem;letter-spacing:.14em;color:var(--text-primary);text-decoration:none}
 .wordmark small{font-family:var(--sans);font-weight:400;font-size:.55rem;letter-spacing:.5em;color:var(--text-secondary);margin-left:.6em;vertical-align:.12em}
 nav .back{font-size:.72rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--text-secondary);text-decoration:none;transition:color .3s var(--ease)}
@@ -90,6 +101,7 @@ footer .flinks a:hover{color:var(--accent)}
   <h1>Datenschutzerklärung</h1>
   <p class="lead">Diese Website setzt keine Cookies, misst nichts und lädt nichts von Dritten nach. Was trotzdem an Daten anfällt, steht hier.</p>
 
+  <div class="ident">
   <h2>Verantwortlicher</h2>
   <p>
     Marc Stelzer, Nitor Studios<br>
@@ -97,6 +109,7 @@ footer .flinks a:hover{color:var(--accent)}
     Telefon <a href="tel:+4367761215455">+43 677 61215455</a> · <a href="mailto:marc.nitorstudios@gmail.com">marc.nitorstudios@gmail.com</a>
   </p>
   <p>Für Fragen zum Datenschutz genügt eine formlose E-Mail an die oben genannte Adresse.</p>
+  </div>
 
   <h2>Grundsatz</h2>
   <p>Diese Website setzt keine Cookies, bindet keine Analyse- oder Trackingdienste ein und lädt keine Inhalte von Drittanbietern nach. Schriften und Videos liegen auf dem Server dieser Website. Es gibt kein Kontaktformular und keinen Newsletter.</p>
