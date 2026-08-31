@@ -89,7 +89,7 @@ nav:not(.solid) .nav-links a:hover{color:var(--brass-light)}
 @media (max-width:720px){.nav-links{display:none}}
 
 /* ---------- Hero ---------- */
-.hero{position:relative;height:500vh}
+.hero{position:relative;height:420vh}
 .stage{position:sticky;top:0;height:100vh;overflow:hidden;background:var(--dark)}
 .poster,video#heroVid{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .poster{background-size:cover;background-position:center}
@@ -693,10 +693,10 @@ document.querySelectorAll('.band[data-split]').forEach(function(band){
 
 /* ---------- Band-Definitionen ---------- */
 var bands = [
-  { el:document.getElementById('band1'), a:0.00, b:0.18, veil:.66, first:true },
-  { el:document.getElementById('band2'), a:0.24, b:0.44, veil:.62 },
-  { el:document.getElementById('band3'), a:0.50, b:0.70, veil:.62 },
-  { el:document.getElementById('band4'), a:0.80, b:1.00, veil:.85, last:true }
+  { el:document.getElementById('band1'), a:0.00, b:0.22, veil:.66, first:true },
+  { el:document.getElementById('band2'), a:0.26, b:0.48, veil:.62 },
+  { el:document.getElementById('band3'), a:0.52, b:0.74, veil:.62 },
+  { el:document.getElementById('band4'), a:0.78, b:1.00, veil:.85, last:true }
 ];
 bands.forEach(function(b){ b.op=-1; b.k=-1; b.el.style.setProperty('--veil', b.veil); });
 
@@ -732,9 +732,9 @@ function updateCaptions(p, now){
     loadK = clamp((now - loadK_t0)/1400, 0, 1);
     loadK = loadK*loadK*(3-2*loadK);
   }
-  var nk = smoothstep(p, 0.48, 0.82);
+  var nk = smoothstep(p, 0.46, 0.78);
   if (Math.abs(nk-lastNk)>0.008){ lastNk=nk; nlogo.style.setProperty('--nk', nk.toFixed(3)); }
-  var sk = smoothstep(p, 0.80, 0.95);
+  var sk = smoothstep(p, 0.78, 0.93);
   if (Math.abs(sk-lastSk)>0.008){ lastSk=sk; nstreak.style.setProperty('--sk', sk.toFixed(3)); }
   for (var i=0;i<bands.length;i++){
     var b = bands[i];
