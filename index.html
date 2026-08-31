@@ -272,22 +272,21 @@ section{position:relative;padding:clamp(5rem,10vw,8.5rem) clamp(1.2rem,4vw,3rem)
 .glanz{background:var(--panel)}
 .glanz .inner{display:grid;grid-template-columns:auto 1fr;gap:clamp(2rem,6vw,5rem);align-items:center}
 @media (max-width:900px){.glanz .inner{grid-template-columns:1fr;justify-items:center;text-align:center}}
-.mono-hold{position:relative;width:clamp(180px,24vw,260px);aspect-ratio:1;border:0;padding:0;cursor:pointer;background:var(--dark);
-  display:block;transition:transform .4s var(--ease)}
-.mono-hold:active{transform:scale(.985)}
-.mono-hold svg{display:block;width:100%;height:100%}
-.mono-hold .streak{transform:translate(calc(-160px + var(--hp,0)*320px),calc(160px - var(--hp,0)*320px))}
+.mono{position:relative;width:clamp(180px,24vw,260px);aspect-ratio:1;background:var(--dark);display:block}
+.mono svg{display:block;width:100%;height:100%}
+/* Markenblatt: der Streifen laeuft einmal durch, 400 ms, danach steht er. */
+.mono .streak{transform:translate(150px,-150px)}
+.glanz.shine .streak{animation:streakPass .4s cubic-bezier(.22,.61,.36,1) both}
+@keyframes streakPass{from{transform:translate(150px,-150px)}to{transform:translate(0,0)}}
 .glanz-copy .lead{font-family:var(--serif);font-size:clamp(1.6rem,2.8vw,2.2rem);line-height:1.25;max-width:22ch}
-.glanz-copy .hint{margin-top:.8rem;font-size:.78rem;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--text-secondary);transition:opacity .5s var(--ease)}
-.glanz.done .hint{opacity:0}
 .glanz-lines{margin-top:1.8rem;list-style:none;display:grid;gap:.7rem}
-.glanz-lines li{font-weight:300;font-size:1.02rem;opacity:.14;transform:translateY(6px);
+.glanz-lines li{font-weight:300;font-size:1.02rem;opacity:0;transform:translateY(6px);
   transition:opacity .6s var(--ease),transform .6s var(--ease);display:flex;gap:.7rem;align-items:baseline}
 @media (max-width:900px){.glanz-lines li{justify-content:center}}
 .glanz-lines li::before{content:"";width:14px;height:1px;background:var(--accent);flex:none;align-self:center}
-.glanz.done .glanz-lines li{opacity:1;transform:translateY(0)}
-.glanz.done .glanz-lines li:nth-child(2){transition-delay:.12s}
-.glanz.done .glanz-lines li:nth-child(3){transition-delay:.24s}
+.glanz.shine .glanz-lines li{opacity:1;transform:translateY(0);transition-delay:.42s}
+.glanz.shine .glanz-lines li:nth-child(2){transition-delay:.54s}
+.glanz.shine .glanz-lines li:nth-child(3){transition-delay:.66s}
 
 /* FAQ */
 .faq details{border-bottom:1px solid var(--line)}
@@ -344,8 +343,7 @@ footer .flinks a:hover{color:var(--accent)}
   body{opacity:1}
   .rev .part{opacity:1;transform:none}
   .glanz .glanz-lines li{opacity:1;transform:none}
-  .glanz .hint{display:none}
-  .mono-hold .streak{transform:translate(0,0)}
+  .mono .streak{transform:translate(0,0);animation:none}
   .diag line{stroke-dashoffset:0 !important}
 }
 </style>
@@ -559,7 +557,7 @@ footer .flinks a:hover{color:var(--accent)}
 
   <section class="glanz" id="glanz">
     <div class="inner">
-      <button class="mono-hold" id="monoHold" type="button" aria-label="Gedrückt halten, bis das N glänzt">
+      <div class="mono" role="img" aria-label="Monogramm von Nitor Studios: ein N, durch das ein Messing-Lichtstreifen läuft">
         <svg viewBox="0 0 200 200" aria-hidden="true">
           <defs>
             <clipPath id="monoClip"><rect x="0" y="0" width="200" height="200"/></clipPath>
@@ -568,12 +566,11 @@ footer .flinks a:hover{color:var(--accent)}
           <g clip-path="url(#monoClip)">
             <line class="streak" x1="150" y1="-40" x2="80" y2="240" stroke="#8A7350" stroke-width="10"/>
           </g>
-          <text x="100" y="138" font-family="Georgia,serif" font-size="110" fill="#F2EFE9" text-anchor="middle">N</text>
+          <text x="100" y="138" font-family="'Instrument Serif',Georgia,serif" font-size="110" fill="#F2EFE9" text-anchor="middle">N</text>
         </svg>
-      </button>
+      </div>
       <div class="glanz-copy rev">
         <p class="lead part">Nitor ist Latein für Glanz.</p>
-        <p class="hint part" id="holdHint">Halte das N gedrückt</p>
         <ul class="glanz-lines">
           <li>Ein Ansprechpartner statt einer Agentur-Kette.</li>
           <li>Fixpreis vor Projektstart, Korrekturschleife inklusive.</li>
@@ -892,9 +889,7 @@ function pinToFinalStates(){
   pinned=true;
   document.querySelectorAll('.diag line').forEach(function(l){ l.style.strokeDashoffset=0; });
   document.querySelectorAll('.rev').forEach(function(el){ el.classList.add('in','settled'); });
-  var g=document.getElementById('glanz');
-  if (g) g.classList.add('done');
-  holdPin();
+  glanzShine();
 }
 function unpinFinalStates(){
   if (!pinned) return;
@@ -1011,37 +1006,16 @@ rmQuery.addEventListener('change',function(e){
   });
 });
 
-/* ---------- Der Glanz-Moment: halten, bis es glänzt ---------- */
+/* ---------- Der Glanz-Moment: der Streifen laeuft einmal durch (Markenblatt) ---------- */
 var glanzSec = document.getElementById('glanz');
-var monoHold = document.getElementById('monoHold');
-var hp=0, holding=false, holdRaf=null, holdLast=0, holdDone=false;
-function holdPin(){
-  hp=1; holdDone=true;
-  if (monoHold) monoHold.style.setProperty('--hp',1);
-  if (glanzSec) glanzSec.classList.add('done');
-}
-function holdStep(now){
-  var dt=Math.min(60,now-(holdLast||now)); holdLast=now;
-  hp += (holding? dt/1600 : -dt/900);
-  hp = clamp(hp,0,1);
-  monoHold.style.setProperty('--hp',hp.toFixed(3));
-  if (hp>=1 && !holdDone){ holdDone=true; glanzSec.classList.add('done'); }
-  if ((holding && hp<1) || (!holding && hp>0 && !holdDone)){ holdRaf=requestAnimationFrame(holdStep); }
-  else { holdRaf=null; holdLast=0; }
-}
-function holdStart(e){
-  if (holdDone) return;
-  if (e.type==='touchstart') e.preventDefault();
-  holding=true;
-  if (holdRaf===null) holdRaf=requestAnimationFrame(holdStep);
-}
-function holdEnd(){ holding=false; if (holdRaf===null && hp>0 && !holdDone) holdRaf=requestAnimationFrame(holdStep); }
-if (monoHold){
-  monoHold.addEventListener('mousedown',holdStart);
-  monoHold.addEventListener('touchstart',holdStart,{passive:false});
-  addEventListener('mouseup',holdEnd);
-  addEventListener('touchend',holdEnd);
-  monoHold.addEventListener('keydown',function(e){ if (e.key==='Enter'||e.key===' '){ e.preventDefault(); holdPin(); } });
+function glanzShine(){ if (glanzSec) glanzSec.classList.add('shine'); }
+if (glanzSec){
+  var shineIO = new IntersectionObserver(function(entries){
+    entries.forEach(function(en){
+      if (en.isIntersecting){ glanzShine(); shineIO.unobserve(en.target); }
+    });
+  },{threshold:0.35});
+  shineIO.observe(glanzSec);
 }
 
 /* ---------- E-Mail kopieren: mailto hilft bei Webmail im Browser nicht ---------- */
