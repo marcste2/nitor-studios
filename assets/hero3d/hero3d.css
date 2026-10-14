@@ -1,0 +1,36 @@
+/* Hero: Flug durch den Raum mit den drei Arbeiten, am Ende landet das N.
+   Wird von index.html und en/index.html geladen, Logik in hero3d.js. */
+.hero{position:relative;height:320vh;background:#0b0907}
+.h3-stage{position:sticky;top:0;height:100vh;width:100%;overflow:hidden;perspective:1000px;perspective-origin:50% 50%;background:#0b0907;color:var(--canvas)}
+.h3-plate{position:absolute;left:0;top:0;pointer-events:none;background-repeat:no-repeat;background-size:100% 100%;will-change:transform,opacity;transform-origin:0 0}
+.h3-licht{mix-blend-mode:screen}
+/* Abdunkelung der Halle, je nach Tempo heller: Deckkraft statt Filter, kein Neuzeichnen */
+.h3-dim{position:absolute;inset:0;background:#000;opacity:.28;pointer-events:none;will-change:opacity}
+.h3-stage canvas{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.h3-world{position:absolute;left:50%;top:50%;width:0;height:0;transform-style:preserve-3d;will-change:transform}
+.h3-panel{position:absolute;width:360px;height:640px;left:-180px;top:-320px;transform-style:preserve-3d;will-change:transform,filter;
+  border-radius:14px;overflow:hidden;background:#1a1612;
+  box-shadow:0 0 0 1px rgba(212,180,122,.25),0 40px 120px rgba(0,0,0,.65),0 0 80px rgba(212,180,122,.12)}
+.h3-panel video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+/* Leichte Fassung für langsame Rechner (setzt hero3d.js selbst): nur noch ein feiner Rahmen statt großer Schatten */
+.h3-lite .h3-panel{box-shadow:0 0 0 1px rgba(212,180,122,.25)}
+.h3-floor{position:absolute;transform-style:preserve-3d;width:2400px;height:2400px;left:-1200px;top:-1200px;
+  background:radial-gradient(closest-side,rgba(212,180,122,.10),rgba(138,115,80,.03) 45%,transparent 70%)}
+.h3-nland{opacity:0}
+.h3-vignette{position:absolute;inset:0;pointer-events:none;background:radial-gradient(130% 100% at 50% 50%,transparent 55%,rgba(0,0,0,.65) 100%)}
+
+/* Texte über dem Raum */
+.h3-ov{position:absolute;pointer-events:none}
+.h3-intro{left:clamp(1.2rem,6vw,6rem);top:16vh;max-width:720px}
+.h3-intro .kicker{font-size:.72rem;font-weight:500;letter-spacing:.32em;text-transform:uppercase;color:var(--brass-light);margin-bottom:1.1rem}
+.h3-intro h1{font-family:var(--serif);font-weight:400;font-size:clamp(46px,7vw,104px);line-height:.98;color:var(--canvas)}
+.h3-hint{left:50%;bottom:5vh;transform:translateX(-50%);font-size:.68rem;letter-spacing:.24em;color:rgba(242,239,233,.55);text-transform:uppercase}
+.h3-cap{left:clamp(1.2rem,6vw,6rem);bottom:9vh;font-size:.75rem;letter-spacing:.2em;text-transform:uppercase;color:var(--canvas);opacity:0}
+.h3-cap small{display:block;color:var(--brass-light);font-size:.62rem;margin-bottom:.5rem;letter-spacing:.24em}
+.h3-final{left:clamp(1.2rem,6vw,6rem);top:50%;transform:translateY(-50%);text-align:left;width:min(470px,40vw);opacity:0}
+.h3-final::before{content:'';position:absolute;left:-6vw;top:-30vh;bottom:-30vh;width:56vw;z-index:-1;
+  background:linear-gradient(90deg,rgba(8,7,5,.78),rgba(8,7,5,.45) 60%,transparent)}
+.h3-final h2{font-family:var(--serif);font-weight:400;font-size:clamp(36px,5vw,72px);line-height:1.02;color:var(--canvas)}
+.h3-final p{margin-top:14px;color:rgba(242,239,233,.72);font-size:15px;font-weight:300}
+.h3-final .cta-row{justify-content:flex-start;margin-top:1.4rem}
+.h3-final.on{pointer-events:auto}

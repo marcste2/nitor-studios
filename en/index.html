@@ -101,67 +101,8 @@ nav:not(.solid) .lang a[aria-current="page"]{color:var(--canvas)}
 nav:not(.solid) .lang span{color:rgba(242,239,233,.3)}
 @media (pointer:coarse){.lang a{min-height:44px;display:inline-flex;align-items:center}}
 
-/* ---------- Hero ---------- */
-.hero{position:relative;height:420vh}
-.stage{position:sticky;top:0;height:100vh;overflow:hidden;background:var(--dark)}
-.poster,video#heroVid{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.poster{background-size:cover;background-position:center}
-video#heroVid{opacity:0;transition:opacity .6s var(--ease);will-change:transform;transform:translateZ(0)}
-.stage.video-ready video#heroVid{opacity:1}
-.stage.video-failed video#heroVid{display:none}
-
-/* Grund-Schleier: dunkelt die Ränder, damit kein Frame je roh unter Text liegt */
-.scrim{position:absolute;inset:0;pointer-events:none;
-  background:radial-gradient(ellipse 130% 100% at 50% 45%,rgba(12,10,8,0) 40%,rgba(12,10,8,.5) 100%)}
-
-/* Das echte N über dem Film: baut sich mit dem Scroll auf */
-.nlogo{position:absolute;top:32vh;left:50%;transform:translate(-50%,-50%) scale(calc(.94 + .06*var(--nk,0)));
-  font-family:var(--serif);font-size:clamp(8rem,26vh,15rem);line-height:1;color:var(--canvas);
-  opacity:var(--nk,0);pointer-events:none;text-shadow:0 2px 30px rgba(12,10,8,.5)}
-/* Der Monogramm-Streifen als exakte Vektorlinie, erscheint zur Ankunft */
-.nstreak{position:absolute;top:32vh;left:calc(50% + 3.2vh);width:1.3vh;height:160vh;
-  transform:translate(-50%,-50%) rotate(14deg);background:rgba(169,143,102,.8);
-  opacity:var(--sk,0);pointer-events:none;filter:blur(1px);
-  -webkit-mask-image:linear-gradient(to bottom,transparent 0%,#000 18%,#000 54%,transparent 68%);
-  mask-image:linear-gradient(to bottom,transparent 0%,#000 18%,#000 54%,transparent 68%)}
-
-/* Text-Bänder (helle Schrift auf dunkler Welt) */
-.band{position:absolute;opacity:0;max-width:34rem;color:var(--canvas);text-shadow:var(--tveil)}
-.band::before{content:"";position:absolute;inset:-22% -18%;z-index:-1;pointer-events:none;
-  opacity:calc(.3 + .7*var(--k,1));
-  background:radial-gradient(ellipse 58% 52% at 50% 50%,rgba(12,10,8,var(--veil,.5)) 0%,rgba(12,10,8,calc(var(--veil,.5)*.6)) 40%,rgba(12,10,8,0) 70%)}
-.band .kicker{font-size:.72rem;font-weight:500;letter-spacing:.32em;text-transform:uppercase;color:var(--brass-light);margin-bottom:1rem}
-.band h1,.band h2{font-family:var(--serif);font-weight:400;line-height:1.08;letter-spacing:0;color:var(--canvas)}
-.band h1{font-size:clamp(2.6rem,5.4vw,4.6rem)}
-.band h2{font-size:clamp(2.2rem,4.4vw,3.6rem)}
-.band p{font-weight:300;font-size:clamp(1.05rem,1.5vw,1.3rem);line-height:1.5;color:var(--canvas)}
-.band .sub{margin-top:1.1rem;color:rgba(242,239,233,.82)}
-#band1{top:16vh;left:clamp(1.2rem,7vw,6rem)}
-#band2{top:30vh;left:clamp(1.2rem,7vw,6rem)}
-#band3{top:26vh;left:clamp(1.2rem,7vw,6rem)}
-#band4{top:50vh;left:50%;transform:translateX(-50%);text-align:center;max-width:46rem;width:min(92vw,46rem)}
+/* ---------- Hero: Flug durch den Raum, Styles in assets/hero3d/hero3d.css ---------- */
 .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
-.w{display:inline-block;white-space:nowrap}
-.c{display:inline-block}
-
-/* Entrance a: Aufstieg Wort für Wort */
-.e-rise .w{--kc:clamp(0,(var(--k,0) - var(--th,0))*2.8,1);opacity:var(--kc);
-  transform:translateY(calc((1 - var(--kc))*26px))}
-/* Entrance c: Blur zu scharf, zwei Kopien */
-.e-blur .soft{filter:blur(9px);position:absolute;inset:0;opacity:calc(1 - var(--k,0))}
-.e-blur .sharp{opacity:var(--k,0)}
-/* Entrance d: Wort-Punch */
-.e-punch .w{--kc:clamp(0,(var(--k,0) - var(--th,0))*3,1);
-  --ks:clamp(0,(var(--k,0) - var(--th,0) - var(--sd,.1))*var(--ss,3.2),1);
-  opacity:var(--kc);
-  transform:scale(calc(0.6 + (0.4 + var(--ov,.1))*var(--kc) - var(--ov,.1)*var(--ks)))}
-.e-punch .w.em{--ov:0.24;--sd:0.16;--ss:2.6;color:var(--accent)}
-/* Entrance e: gestaffelte Ankunft */
-.e-settle .w{--kc:clamp(0,(var(--k,0) - var(--th,0))*3,1);opacity:var(--kc);
-  transform:translateY(calc((1 - var(--kc))*22px))}
-.e-settle .sub{opacity:var(--ks2,0);transform:translateY(calc((1 - var(--ks2,0))*14px))}
-.e-settle .cta-row{opacity:var(--kb,0);transform:translateY(calc((1 - var(--kb,0))*12px))}
-
 .cta-row{display:flex;gap:1rem;justify-content:center;margin-top:1.8rem;flex-wrap:wrap}
 .btn{display:inline-block;font-size:.78rem;font-weight:500;letter-spacing:.18em;text-transform:uppercase;
   text-decoration:none;padding:.95rem 1.9rem;border:1px solid var(--text-primary);color:var(--text-primary);
@@ -170,21 +111,12 @@ video#heroVid{opacity:0;transition:opacity .6s var(--ease);will-change:transform
 .btn.solid{background:var(--dark);color:var(--canvas);border-color:var(--dark)}
 .btn.solid:hover{background:var(--accent);border-color:var(--accent)}
 /* Buttons auf dunklem Grund (Hero und statischer Hero) */
-.stage .btn,.static-hero .btn{border-color:var(--canvas);color:var(--canvas)}
-.stage .btn:hover,.static-hero .btn:hover{background:var(--canvas);color:var(--dark)}
-.stage .btn.solid,.static-hero .btn.solid{background:var(--canvas);color:var(--dark);border-color:var(--canvas)}
-.stage .btn.solid:hover,.static-hero .btn.solid:hover{background:var(--brass-light);border-color:var(--brass-light);color:var(--dark)}
+.hero .btn,.static-hero .btn{border-color:var(--canvas);color:var(--canvas)}
+.hero .btn:hover,.static-hero .btn:hover{background:var(--canvas);color:var(--dark)}
+.hero .btn.solid,.static-hero .btn.solid{background:var(--canvas);color:var(--dark);border-color:var(--canvas)}
+.hero .btn.solid:hover,.static-hero .btn.solid:hover{background:var(--brass-light);border-color:var(--brass-light);color:var(--dark)}
 @media (pointer:coarse){.btn{min-height:44px;display:inline-flex;align-items:center;justify-content:center}}
 
-/* Ladering und Scroll-Hinweis */
-.ring-wrap{position:absolute;bottom:3.2rem;left:50%;transform:translateX(-50%);color:var(--accent)}
-.ring{width:34px;height:34px;transform:rotate(-90deg)}
-.ring circle{stroke-dashoffset:var(--ld,126);transition:stroke-dashoffset .2s linear}
-.cue{position:absolute;bottom:3.2rem;left:50%;transform:translateX(-50%);color:rgba(242,239,233,.65);opacity:0;transition:opacity .8s var(--ease)}
-.cue.on{opacity:1}
-.cue svg{display:block;animation:cuefloat 2.6s var(--ease-io) -1.2s infinite alternate}
-@keyframes cuefloat{from{transform:translateY(-4px)}to{transform:translateY(4px)}}
-@media (max-height:560px){.cue,.ring-wrap{display:none}}
 
 /* Statischer Hero */
 .static-hero{display:none;position:relative;min-height:100svh;padding:7rem 1.4rem 4rem;
@@ -356,6 +288,7 @@ footer .flinks a:hover{color:var(--accent)}
   .diag line{stroke-dashoffset:0 !important}
 }
 </style>
+<link rel="stylesheet" href="../assets/hero3d/hero3d.css">
 </head>
 <body>
 <a class="skip" href="#main">Zum Inhalt springen</a>
@@ -376,40 +309,30 @@ footer .flinks a:hover{color:var(--accent)}
   </div>
 </nav>
 
-<!-- Scroll-Hero -->
-<div class="hero" id="top">
-  <div class="stage" id="stage">
-    <div class="poster" id="poster" aria-hidden="true"></div>
-    <video id="heroVid" preload="none" muted playsinline aria-hidden="true" tabindex="-1"></video>
-    <div class="scrim" aria-hidden="true"></div>
-    <div class="nstreak" id="nstreak" aria-hidden="true"></div>
-    <div class="nlogo" id="nlogo" aria-hidden="true">N</div>
-
-    <div class="band e-rise" id="band1" data-split="h1">
-      <p class="kicker">Nitor Studios · Vienna</p>
-      <h1>Motion that sells.</h1>
+<!-- Scroll-Hero: Flug durch den Raum mit den drei Arbeiten, am Ende landet das N -->
+<div class="hero" id="top" data-frames="../assets/hero3d/n/" data-frame-count="121">
+  <div class="h3-stage" id="stage">
+    <div class="h3-plate h3-halle" style="background-image:url('../assets/hero3d/halle.jpg')" aria-hidden="true"></div>
+    <div class="h3-plate h3-licht" style="background-image:url('../assets/hero3d/licht.jpg')" aria-hidden="true"></div>
+    <canvas class="h3-bg" aria-hidden="true"></canvas>
+    <div class="h3-world" aria-hidden="true">
+      <div class="h3-floor"></div>
+      <div class="h3-panel" data-name="Less is More · Belly Oil"><video muted loop playsinline preload="none" tabindex="-1"><source src="../assets/hero3d/clip_almamom.webm" type="video/webm"><source src="../assets/hero3d/clip_almamom.mp4" type="video/mp4"></video></div>
+      <div class="h3-panel" data-name="die Nikolai · Organic grape cosmetics"><video muted loop playsinline preload="none" tabindex="-1"><source src="../assets/hero3d/clip_nikolai.webm" type="video/webm"><source src="../assets/hero3d/clip_nikolai.mp4" type="video/mp4"></video></div>
+      <div class="h3-panel" data-name="gloryfy · Eyewear"><video muted loop playsinline preload="none" tabindex="-1"><source src="../assets/hero3d/clip_gloryfy.webm" type="video/webm"><source src="../assets/hero3d/clip_gloryfy.mp4" type="video/mp4"></video></div>
     </div>
-
-    <div class="band e-blur" id="band2">
-      <p class="soft" aria-hidden="true">A product film usually ties up weeks and a budget many brands don't have.</p>
-      <p class="sharp">A product film usually ties up weeks and a budget many brands don't have.</p>
-    </div>
-
-    <div class="band e-punch" id="band3" data-split="p" data-em="48,hours.">
-      <p>Nitor: three ads, three formats, 48 hours.</p>
-    </div>
-
-    <div class="band e-settle" id="band4" data-split="h2">
+    <canvas class="h3-nland" aria-hidden="true"></canvas>
+    <div class="h3-vignette" aria-hidden="true"></div>
+    <div class="h3-ov h3-intro"><p class="kicker">Nitor Studios · Vienna</p><h1>Motion<br>that sells.</h1></div>
+    <div class="h3-ov h3-hint" aria-hidden="true">Scroll</div>
+    <div class="h3-ov h3-cap" aria-hidden="true"><small></small><span></span></div>
+    <div class="h3-ov h3-final">
       <h2>Product videos that fit the product.</h2>
-      <p class="sub">Motion design for premium brands. Fixed price, revision round included.</p>
+      <p>Motion design for premium brands. Fixed price, revision round included.</p>
       <div class="cta-row">
         <a class="btn solid" href="#arbeiten">See the work</a>
         <a class="btn" href="#kontakt">Make an enquiry</a>
       </div>
-    </div>
-
-    <div class="ring-wrap" id="ringWrap" aria-hidden="true">
-      <svg class="ring" viewBox="0 0 48 48"><circle cx="24" cy="24" r="20" fill="none" stroke="currentColor" stroke-width="3" stroke-dasharray="126"/></svg>
     </div>
   </div>
 </div>
@@ -644,21 +567,13 @@ footer .flinks a:hover{color:var(--accent)}
   </p>
 </footer>
 
+<script src="../assets/hero3d/hero3d.js"></script>
 <script>
 (function(){
 'use strict';
 
 /* ---------- Grundlagen ---------- */
-var video = document.getElementById('heroVid');
-var stage = document.getElementById('stage');
-var hero = document.querySelector('.hero');
-var posterLayer = document.getElementById('poster');
-var ringWrap = document.getElementById('ringWrap');
-var ringCircle = ringWrap ? ringWrap.querySelector('circle') : null;
 var navEl = document.querySelector('nav');
-var VIDEO_URL = '../assets/hero-scrub.mp4';
-var VIDEO_BYTES = 3452794;
-var POSTER_URL = '../assets/hero-poster.jpg';
 var ENDING_URL = '../assets/hero-ending.jpg';
 
 var clamp = function(v,lo,hi){ return Math.min(hi,Math.max(lo,v)); };
@@ -669,192 +584,6 @@ var smoothstep = function(p,e0,e1){
 function rng(seed){
   var s = seed>>>0;
   return function(){ s = (s*1664525+1013904223)>>>0; return s/4294967296; };
-}
-
-/* ---------- Text-Splitting (einmal, beim Laden) ---------- */
-function splitEl(el, emWords){
-  var text = el.textContent;
-  el.setAttribute('aria-hidden','true');
-  var sr = document.createElement('span');
-  sr.className = 'sr-only';
-  sr.textContent = text;
-  el.parentNode.insertBefore(sr, el);
-  sr.removeAttribute('aria-hidden');
-  var r = rng(text.length*2654435761);
-  el.textContent = '';
-  var words = text.split(' ');
-  for (var i=0;i<words.length;i++){
-    var w = document.createElement('span');
-    w.className = 'w';
-    if (emWords && emWords.indexOf(words[i]) !== -1) w.classList.add('em');
-    w.style.setProperty('--th', (i/words.length*0.5 + r()*0.05).toFixed(3));
-    w.textContent = words[i];
-    el.appendChild(w);
-    if (i<words.length-1) el.appendChild(document.createTextNode(' '));
-  }
-}
-document.querySelectorAll('.band[data-split]').forEach(function(band){
-  var sel = band.getAttribute('data-split');
-  var el = band.querySelector(sel);
-  var em = (band.getAttribute('data-em')||'').split(',').filter(Boolean);
-  if (el) splitEl(el, em);
-});
-
-/* ---------- Band-Definitionen ---------- */
-var bands = [
-  { el:document.getElementById('band1'), a:0.00, b:0.22, veil:.66, first:true },
-  { el:document.getElementById('band2'), a:0.26, b:0.48, veil:.62 },
-  { el:document.getElementById('band3'), a:0.52, b:0.74, veil:.62 },
-  { el:document.getElementById('band4'), a:0.78, b:1.00, veil:.85, last:true }
-];
-bands.forEach(function(b){ b.op=-1; b.k=-1; b.el.style.setProperty('--veil', b.veil); });
-
-/* ---------- Scrub-Antrieb ---------- */
-var target=0, shown=0, rafId=null, lastTick=0, heroOnScreen=true;
-var loadK = 0, loadK_t0 = null;
-
-function heroProgress(){
-  var rect = hero.getBoundingClientRect();
-  var range = hero.offsetHeight - innerHeight;
-  if (range<=0) return 0;
-  return clamp(-rect.top/range,0,1);
-}
-
-var seekBusy=false, pendingTime=null;
-function requestSeek(t){
-  if (!video.duration) return;
-  if (seekBusy){ pendingTime=t; return; }
-  seekBusy=true;
-  video.currentTime=t;
-}
-video.addEventListener('seeked',function(){
-  seekBusy=false;
-  if (pendingTime!==null){ var t=pendingTime; pendingTime=null; requestSeek(t); }
-});
-video.addEventListener('error',function(){ seekBusy=false; pendingTime=null; failVideo(); });
-
-var nlogo = document.getElementById('nlogo');
-var nstreak = document.getElementById('nstreak');
-var lastNk = -1, lastSk = -1;
-function updateCaptions(p, now){
-  if (loadK < 1 && loadK_t0 !== null){
-    loadK = clamp((now - loadK_t0)/1400, 0, 1);
-    loadK = loadK*loadK*(3-2*loadK);
-  }
-  var nk = smoothstep(p, 0.46, 0.78);
-  if (Math.abs(nk-lastNk)>0.008){ lastNk=nk; nlogo.style.setProperty('--nk', nk.toFixed(3)); }
-  var sk = smoothstep(p, 0.78, 0.93);
-  if (Math.abs(sk-lastSk)>0.008){ lastSk=sk; nstreak.style.setProperty('--sk', sk.toFixed(3)); }
-  for (var i=0;i<bands.length;i++){
-    var b = bands[i];
-    var f = Math.min(0.02,(b.b-b.a)/3);
-    var op = (b.first ? 1 : smoothstep(p,b.a,b.a+f)) * (b.last ? 1 : (1-smoothstep(p,b.b-f,b.b)));
-    if (b.first && p > b.b) op = 0;
-    if (b.first) op *= (1-smoothstep(p,b.b-f,b.b));
-    if (b.last && p < b.a) op = smoothstep(p,b.a,b.a+f);
-    var ramp = Math.min(0.03,(b.b-b.a)*0.35);
-    var k = clamp((p-b.a)/ramp,0,1);
-    if (b.first) k = Math.max(k, loadK);
-    if (Math.abs(op-b.op)>0.008){ b.op=op; b.el.style.opacity=op.toFixed(3); }
-    if (Math.abs(k-b.k)>0.008){
-      b.k=k; b.el.style.setProperty('--k',k.toFixed(3));
-      if (b.last){
-        b.el.style.setProperty('--ks2', clamp((k-0.55)*3.5,0,1).toFixed(3));
-        b.el.style.setProperty('--kb', clamp((k-0.72)*4,0,1).toFixed(3));
-      }
-    }
-  }
-}
-
-function tick(now){
-  var dt = Math.min(100, now-(lastTick||now));
-  lastTick = now;
-  var kf = 0.16;
-  shown += (target-shown)*(1-Math.pow(1-kf,dt/16.667));
-  var converged = Math.abs(target-shown)<0.0005 && loadK>=1;
-  if (converged){ shown=target; rafId=null; lastTick=0; }
-  else { rafId=requestAnimationFrame(tick); }
-  if (video.duration) requestSeek(shown*video.duration);
-  updateCaptions(shown, now);
-}
-function kick(){ if (rafId===null && heroOnScreen) rafId=requestAnimationFrame(tick); }
-function onScroll(){ target=heroProgress(); kick(); }
-
-new IntersectionObserver(function(entries){
-  heroOnScreen = entries[0].isIntersecting;
-  if (heroOnScreen) kick();
-},{threshold:0}).observe(hero);
-
-/* ---------- Blob-Laden mit Ring ---------- */
-var heroInited=false;
-function initHeroOnce(){
-  if (heroInited) return;
-  heroInited=true;
-  posterLayer.style.backgroundImage = "url('"+POSTER_URL+"')";
-  loadK_t0 = performance.now();
-  kick();
-  var started=false;
-  function startBlobFetch(){
-    if (started) return; started=true;
-    loadHeroBlob().catch(failVideo);
-  }
-  var img = new Image();
-  img.onload=startBlobFetch; img.onerror=startBlobFetch;
-  img.src=POSTER_URL;
-  setTimeout(startBlobFetch,4000);
-}
-
-function loadHeroBlob(){
-  var ctrl = new AbortController();
-  var watchdog = setTimeout(function(){ctrl.abort();},20000);
-  return fetch(VIDEO_URL,{priority:'low',signal:ctrl.signal}).then(function(res){
-    if (!res.ok) throw new Error('http '+res.status);
-    var total = Number(res.headers.get('Content-Length'))||VIDEO_BYTES;
-    var reader = res.body.getReader();
-    var chunks=[], got=0, lastRing=0;
-    function pump(){
-      return reader.read().then(function(r){
-        if (r.done) return;
-        clearTimeout(watchdog);
-        watchdog = setTimeout(function(){ctrl.abort();},20000);
-        chunks.push(r.value);
-        got += r.value.length;
-        var frac = Math.min(1,got/total);
-        var now = performance.now();
-        if (ringCircle && (now-lastRing>100 || frac===1)){
-          lastRing=now;
-          ringCircle.style.strokeDashoffset = Math.round(126*(1-frac));
-        }
-        return pump();
-      });
-    }
-    return pump().then(function(){
-      clearTimeout(watchdog);
-      if (ringCircle) ringCircle.style.strokeDashoffset=0;
-      video.src = URL.createObjectURL(new Blob(chunks,{type:'video/mp4'}));
-      video.load();
-      video.addEventListener('canplay',function(){
-        requestSeek(heroProgress()*video.duration);
-        stage.classList.add('video-ready');
-        swapRingForCue();
-      },{once:true});
-    });
-  });
-}
-
-function swapRingForCue(){
-  if (!ringWrap) return;
-  var cue = document.createElement('div');
-  cue.className='cue on';
-  cue.setAttribute('aria-hidden','true');
-  cue.innerHTML='<svg width="22" height="30" viewBox="0 0 22 30"><path d="M11 4 V22 M4 16 L11 24 L18 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>';
-  ringWrap.replaceWith(cue);
-  ringWrap=null; ringCircle=null;
-}
-function failVideo(){
-  stage.classList.add('video-failed');
-  posterLayer.style.backgroundImage = "url('"+POSTER_URL+"')";
-  swapRingForCue();
 }
 
 /* ---------- Static-Hero-Gates, live ---------- */
@@ -870,18 +599,12 @@ var staticHero = document.getElementById('staticHero');
 var staticBgSet=false;
 function enableScrub(){
   if (scrubOn) return; scrubOn=true;
-  initHeroOnce();
-  addEventListener('scroll',onScroll,{passive:true});
-  bands.forEach(function(b){ b.op=-1; b.k=-1; });
+  if (window.NitorHero) NitorHero.start();
   unpinFinalStates();
-  target=heroProgress();
-  updateCaptions(target, performance.now());
-  onScroll();
 }
 function disableScrub(){
   if (!scrubOn) return; scrubOn=false;
-  removeEventListener('scroll',onScroll);
-  if (rafId!==null){ cancelAnimationFrame(rafId); rafId=null; }
+  if (window.NitorHero) NitorHero.stop();
 }
 function applyHeroMode(){
   var gated = GATES.some(function(q){ return matchMedia(q).matches; });
@@ -915,8 +638,11 @@ matchMedia('(prefers-reduced-motion: reduce)').addEventListener('change',functio
 
 /* ---------- Nav-Zustand ---------- */
 var navSolid=false;
+var heroEl = document.querySelector('.hero');
 function navCheck(){
-  var want = scrollY > innerHeight*0.5;
+  // über dem dunklen Raum bleibt die Navigation hell, fest wird sie erst am Ende des Heros
+  var lim = heroEl && heroEl.offsetHeight ? heroEl.offsetHeight - innerHeight*0.5 : innerHeight*0.5;
+  var want = scrollY > lim;
   if (want!==navSolid){ navSolid=want; navEl.classList.toggle('solid',want); }
 }
 addEventListener('scroll',navCheck,{passive:true});
